@@ -107,3 +107,20 @@ async def subir(ctx, nombre: str, posicion: str, rating: int, a: int, b: int, c:
     
     if posicion.upper() == "PO":
         stats = {"DIV": a, "HAN": b, "KIC": c
+
+                 import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b'Bot is running')
+
+def run_server():
+    port = int(os.environ.get("PORT", 10000))
+    server = HTTPServer(("", port), Handler)
+    server.serve_forever()
+
+threading.Thread(target=run_server).start(
+
